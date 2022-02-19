@@ -98,13 +98,6 @@ class _LoginPageState extends State<LoginPage> {
                           ElevatedButton(
                             onPressed: () {
                               Provider.of<AuthService>(context, listen: false).login("sanath@abc.com", "password");
-
-                              // Navigator.of(context)
-                              //     .pushNamed(CustomerMainScreen.routeName);
-                              // if (_formKey.currentState!.validate()) {
-                              //   widget.signInWithEmailAndPassword(
-                              //       emailController.text, passwordController.text);
-                              // }
                             },
                             child: const Text('Login'),
                             style: ElevatedButton.styleFrom(

@@ -26,7 +26,7 @@ class AuthService extends ChangeNotifier{
 
   Future<void> login(String email, String password) async {
     var data = await ApiClient().post('login', {
-      'email': 'sadsa',
+      'email': email,
       'password': password
     });
     var token = data['access_token'];
