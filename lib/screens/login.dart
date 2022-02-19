@@ -97,7 +97,12 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Provider.of<AuthService>(context, listen: false).login("sanath@abc.com", "password");
+                              if(_formKey.currentState!.validate()) {
+                                Provider.of<AuthService>(context, listen: false).login(
+                                    emailController.text,
+                                    passwordController.text
+                                );
+                              }
                             },
                             child: const Text('Login'),
                             style: ElevatedButton.styleFrom(

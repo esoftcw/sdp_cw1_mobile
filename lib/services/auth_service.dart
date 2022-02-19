@@ -13,13 +13,16 @@ class AuthService extends ChangeNotifier{
   }
 
   bool _isLoggedIn = false;
+  String _role = "na";
 
   bool get isLoggedIn => _isLoggedIn;
+  String get role => _role;
 
   Future<void> checkIsAlreadyLogin() async {
     var token = await StorageService().get('token');
     if (token != null && !JwtDecoder.isExpired(token)) {
       _isLoggedIn = true;
+      _role = (await StorageService().get('role'))!;
       notifyListeners();
     }
   }
@@ -31,8 +34,11 @@ class AuthService extends ChangeNotifier{
     });
     var token = data['access_token'];
     if (token != null) {
+      print(data['user']['role']);
       _isLoggedIn = true;
+      _role = data['user']['role'];
       StorageService().add('token', data['access_token']);
+      StorageService().add('role', data['user']['role']);
       notifyListeners();
     }
   }
@@ -40,6 +46,7 @@ class AuthService extends ChangeNotifier{
   Future<void> logout() async {
     _isLoggedIn = false;
     await StorageService().delete('token');
+    await StorageService().delete('role');
     notifyListeners();
   }
 
