@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pickandgo/services/auth_service.dart';
+import 'package:provider/provider.dart';
 import '/screens/customer/screens/main_screen.dart';
 import '/screens/employee/screens/main_screen.dart';
 
@@ -75,6 +77,9 @@ class EmployeeSideBar extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Logout'),
+              onTap: () {
+                Provider.of<AuthService>(context, listen: false).logout();
+              },
             ),
           ],
         ),

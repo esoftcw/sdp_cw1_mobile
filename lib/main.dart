@@ -5,6 +5,7 @@ import 'package:pickandgo/screens/customer/screens/add_new_delivery_screen.dart'
 import 'package:pickandgo/screens/customer/screens/customer_delivery_details.dart';
 import 'package:pickandgo/screens/customer/screens/main_screen.dart';
 import 'package:pickandgo/screens/customer_home.dart';
+import 'package:pickandgo/screens/employee/screens/main_screen.dart';
 import 'package:pickandgo/services/auth_service.dart';
 import 'package:pickandgo/services/delivery_service.dart';
 import 'package:pickandgo/state/pickup_builder.dart';
@@ -66,7 +67,11 @@ class InitApp extends StatelessWidget {
           return const LoginPage();
         }
 
-        return const CustomerMainScreen();
+        if (authService.role == "customer") {
+          return const CustomerMainScreen();
+        }
+
+        return  const EmployeeMainScreen();
       },
     );
   }
