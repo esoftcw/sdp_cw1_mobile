@@ -39,6 +39,9 @@ class AuthService extends ChangeNotifier{
       _role = data['user']['role'];
       StorageService().add('token', data['access_token']);
       StorageService().add('role', data['user']['role']);
+      StorageService().add('userId', data['user']['id'].toString());
+      StorageService().add('userName', data['user']['name']);
+      StorageService().add('userEmail', data['user']['email']);
       notifyListeners();
     }
   }

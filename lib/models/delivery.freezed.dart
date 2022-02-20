@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'delivery_summary.dart';
+part of 'delivery.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,22 +14,22 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DeliverySummary _$DeliverySummaryFromJson(Map<String, dynamic> json) {
-  return _DeliverySummary.fromJson(json);
+Delivery _$DeliveryFromJson(Map<String, dynamic> json) {
+  return _Delivery.fromJson(json);
 }
 
 /// @nodoc
-class _$DeliverySummaryTearOff {
-  const _$DeliverySummaryTearOff();
+class _$DeliveryTearOff {
+  const _$DeliveryTearOff();
 
-  _DeliverySummary call(
+  _Delivery call(
       {String? track_no,
       required int id,
       required String from,
       required String to,
       required String eta,
       required String type}) {
-    return _DeliverySummary(
+    return _Delivery(
       track_no: track_no,
       id: id,
       from: from,
@@ -39,16 +39,16 @@ class _$DeliverySummaryTearOff {
     );
   }
 
-  DeliverySummary fromJson(Map<String, Object?> json) {
-    return DeliverySummary.fromJson(json);
+  Delivery fromJson(Map<String, Object?> json) {
+    return Delivery.fromJson(json);
   }
 }
 
 /// @nodoc
-const $DeliverySummary = _$DeliverySummaryTearOff();
+const $Delivery = _$DeliveryTearOff();
 
 /// @nodoc
-mixin _$DeliverySummary {
+mixin _$Delivery {
   String? get track_no => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get from => throw _privateConstructorUsedError;
@@ -58,15 +58,14 @@ mixin _$DeliverySummary {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DeliverySummaryCopyWith<DeliverySummary> get copyWith =>
+  $DeliveryCopyWith<Delivery> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DeliverySummaryCopyWith<$Res> {
-  factory $DeliverySummaryCopyWith(
-          DeliverySummary value, $Res Function(DeliverySummary) then) =
-      _$DeliverySummaryCopyWithImpl<$Res>;
+abstract class $DeliveryCopyWith<$Res> {
+  factory $DeliveryCopyWith(Delivery value, $Res Function(Delivery) then) =
+      _$DeliveryCopyWithImpl<$Res>;
   $Res call(
       {String? track_no,
       int id,
@@ -77,13 +76,12 @@ abstract class $DeliverySummaryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DeliverySummaryCopyWithImpl<$Res>
-    implements $DeliverySummaryCopyWith<$Res> {
-  _$DeliverySummaryCopyWithImpl(this._value, this._then);
+class _$DeliveryCopyWithImpl<$Res> implements $DeliveryCopyWith<$Res> {
+  _$DeliveryCopyWithImpl(this._value, this._then);
 
-  final DeliverySummary _value;
+  final Delivery _value;
   // ignore: unused_field
-  final $Res Function(DeliverySummary) _then;
+  final $Res Function(Delivery) _then;
 
   @override
   $Res call({
@@ -124,11 +122,9 @@ class _$DeliverySummaryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DeliverySummaryCopyWith<$Res>
-    implements $DeliverySummaryCopyWith<$Res> {
-  factory _$DeliverySummaryCopyWith(
-          _DeliverySummary value, $Res Function(_DeliverySummary) then) =
-      __$DeliverySummaryCopyWithImpl<$Res>;
+abstract class _$DeliveryCopyWith<$Res> implements $DeliveryCopyWith<$Res> {
+  factory _$DeliveryCopyWith(_Delivery value, $Res Function(_Delivery) then) =
+      __$DeliveryCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? track_no,
@@ -140,15 +136,13 @@ abstract class _$DeliverySummaryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$DeliverySummaryCopyWithImpl<$Res>
-    extends _$DeliverySummaryCopyWithImpl<$Res>
-    implements _$DeliverySummaryCopyWith<$Res> {
-  __$DeliverySummaryCopyWithImpl(
-      _DeliverySummary _value, $Res Function(_DeliverySummary) _then)
-      : super(_value, (v) => _then(v as _DeliverySummary));
+class __$DeliveryCopyWithImpl<$Res> extends _$DeliveryCopyWithImpl<$Res>
+    implements _$DeliveryCopyWith<$Res> {
+  __$DeliveryCopyWithImpl(_Delivery _value, $Res Function(_Delivery) _then)
+      : super(_value, (v) => _then(v as _Delivery));
 
   @override
-  _DeliverySummary get _value => super._value as _DeliverySummary;
+  _Delivery get _value => super._value as _Delivery;
 
   @override
   $Res call({
@@ -159,7 +153,7 @@ class __$DeliverySummaryCopyWithImpl<$Res>
     Object? eta = freezed,
     Object? type = freezed,
   }) {
-    return _then(_DeliverySummary(
+    return _then(_Delivery(
       track_no: track_no == freezed
           ? _value.track_no
           : track_no // ignore: cast_nullable_to_non_nullable
@@ -191,8 +185,8 @@ class __$DeliverySummaryCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_DeliverySummary extends _DeliverySummary {
-  _$_DeliverySummary(
+class _$_Delivery extends _Delivery {
+  _$_Delivery(
       {this.track_no,
       required this.id,
       required this.from,
@@ -201,8 +195,8 @@ class _$_DeliverySummary extends _DeliverySummary {
       required this.type})
       : super._();
 
-  factory _$_DeliverySummary.fromJson(Map<String, dynamic> json) =>
-      _$$_DeliverySummaryFromJson(json);
+  factory _$_Delivery.fromJson(Map<String, dynamic> json) =>
+      _$$_DeliveryFromJson(json);
 
   @override
   final String? track_no;
@@ -219,14 +213,14 @@ class _$_DeliverySummary extends _DeliverySummary {
 
   @override
   String toString() {
-    return 'DeliverySummary(track_no: $track_no, id: $id, from: $from, to: $to, eta: $eta, type: $type)';
+    return 'Delivery(track_no: $track_no, id: $id, from: $from, to: $to, eta: $eta, type: $type)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DeliverySummary &&
+            other is _Delivery &&
             const DeepCollectionEquality().equals(other.track_no, track_no) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.from, from) &&
@@ -247,27 +241,26 @@ class _$_DeliverySummary extends _DeliverySummary {
 
   @JsonKey(ignore: true)
   @override
-  _$DeliverySummaryCopyWith<_DeliverySummary> get copyWith =>
-      __$DeliverySummaryCopyWithImpl<_DeliverySummary>(this, _$identity);
+  _$DeliveryCopyWith<_Delivery> get copyWith =>
+      __$DeliveryCopyWithImpl<_Delivery>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeliverySummaryToJson(this);
+    return _$$_DeliveryToJson(this);
   }
 }
 
-abstract class _DeliverySummary extends DeliverySummary {
-  factory _DeliverySummary(
+abstract class _Delivery extends Delivery {
+  factory _Delivery(
       {String? track_no,
       required int id,
       required String from,
       required String to,
       required String eta,
-      required String type}) = _$_DeliverySummary;
-  _DeliverySummary._() : super._();
+      required String type}) = _$_Delivery;
+  _Delivery._() : super._();
 
-  factory _DeliverySummary.fromJson(Map<String, dynamic> json) =
-      _$_DeliverySummary.fromJson;
+  factory _Delivery.fromJson(Map<String, dynamic> json) = _$_Delivery.fromJson;
 
   @override
   String? get track_no;
@@ -283,6 +276,6 @@ abstract class _DeliverySummary extends DeliverySummary {
   String get type;
   @override
   @JsonKey(ignore: true)
-  _$DeliverySummaryCopyWith<_DeliverySummary> get copyWith =>
+  _$DeliveryCopyWith<_Delivery> get copyWith =>
       throw _privateConstructorUsedError;
 }

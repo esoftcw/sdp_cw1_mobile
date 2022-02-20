@@ -36,6 +36,7 @@ class ApiClient {
   }
 
   _transformer(Response response) {
+    print(response.body);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     }

@@ -4,8 +4,10 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:pickandgo/screens/customer/screens/add_new_delivery_screen.dart';
 import 'package:pickandgo/screens/customer/screens/customer_delivery_details.dart';
 import 'package:pickandgo/screens/customer/screens/main_screen.dart';
-import 'package:pickandgo/screens/customer_home.dart';
+import 'package:pickandgo/screens/employee/screens/employee_add_edit_delivery_screen.dart';
+import 'package:pickandgo/screens/employee/screens/employee_delivery_details.dart';
 import 'package:pickandgo/screens/employee/screens/main_screen.dart';
+import 'package:pickandgo/screens/employee/screens/wizard/employee_add_photo_screen.dart';
 import 'package:pickandgo/services/auth_service.dart';
 import 'package:pickandgo/services/delivery_service.dart';
 import 'package:pickandgo/state/pickup_builder.dart';
@@ -50,6 +52,10 @@ class TripAndGo extends StatelessWidget {
         CustomerMainScreen.routeName: (ctx) => const CustomerMainScreen(),
         CustomerAddNewDeliver.routeName: (ctx) => const CustomerAddNewDeliver(),
         CustomerDeliveryDetailsScreen.routeName: (ctx) => const CustomerDeliveryDetailsScreen(),
+        EmployeeMainScreen.routeName: (ctx) => const EmployeeMainScreen(),
+        EmployeeDeliveryDetailsScreen.routeName: (ctx) => EmployeeDeliveryDetailsScreen(),
+        EmployeeEditNewDeliver.routeName: (ctx) => const EmployeeEditNewDeliver(),
+        EmployeeAddPhotoScreen.routeName: (ctx) => EmployeeAddPhotoScreen(),
       },
     );
   }

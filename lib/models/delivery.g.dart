@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'delivery_summary.dart';
+part of 'delivery.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DeliverySummary _$$_DeliverySummaryFromJson(Map<String, dynamic> json) =>
-    _$_DeliverySummary(
+_$_Delivery _$$_DeliveryFromJson(Map<String, dynamic> json) => _$_Delivery(
       track_no: json['track_no'] as String?,
       id: json['id'] as int,
       from: json['from'] as String,
@@ -16,7 +15,7 @@ _$_DeliverySummary _$$_DeliverySummaryFromJson(Map<String, dynamic> json) =>
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$_DeliverySummaryToJson(_$_DeliverySummary instance) =>
+Map<String, dynamic> _$$_DeliveryToJson(_$_Delivery instance) =>
     <String, dynamic>{
       'track_no': instance.track_no,
       'id': instance.id,
