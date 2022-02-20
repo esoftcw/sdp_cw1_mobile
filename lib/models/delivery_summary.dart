@@ -12,9 +12,11 @@ class DeliverySummary with _$DeliverySummary {
   factory DeliverySummary(
       {
          String? track_no,
+        required int id,
         required String from,
         required String to,
         required String eta,
+        required String type,
       }) = _DeliverySummary;
 
   factory DeliverySummary.fromJson(Map<String, dynamic> json) => _$DeliverySummaryFromJson(json);

@@ -167,7 +167,7 @@ class _EmployeeEditDeliverScreen2State
                 cDuration: widget.cDuration,
                 cCurve: widget.cCurve,
                 onPress: () {
-                  return false;
+                  return true;
                 },
               ),
             ],

@@ -36,21 +36,6 @@ class _EmployeeEditNewDeliverState extends State<EmployeeEditNewDeliver> {
       body: PageView(
         controller: controller,
         children: [
-          EmployeeEditDeliverScreen1(
-            controller: controller,
-            cCurve: cCurve,
-            cDuration: cDuration,
-          ),
-          EmployeeEditDeliverScreen2(
-            controller: controller,
-            cCurve: cCurve,
-            cDuration: cDuration,
-          ),
-          EmployeeEditDeliverScreen3(
-            controller: controller,
-            cCurve: cCurve,
-            cDuration: cDuration,
-          ),
           EmployeeEditDeliverScreen4(
             controller: controller,
             cCurve: cCurve,
