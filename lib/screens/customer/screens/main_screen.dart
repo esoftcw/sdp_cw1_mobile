@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:pickandgo/models/delivery_summary.dart';
 import 'package:pickandgo/screens/customer/screens/customer_delivery_details.dart';
 import 'package:pickandgo/services/delivery_service.dart';
+import 'package:pickandgo/state/current_delivery.dart';
 import 'package:provider/provider.dart';
 import '../widgets/customer_sidebar.dart';
 import 'add_new_delivery_screen.dart';
@@ -38,7 +39,16 @@ class _CustomerMainScreenState extends State<CustomerMainScreen> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
+                          Provider.of<CurrentDelivery>(context, listen: false)
+                              .setSelectedId(deliveries.data![index].id);
 
+                          Navigator.of(context)
+                              .pushNamed(
+                              CustomerDeliveryDetailsScreen.routeName,
+                              arguments: {
+                                "id": deliveries.data![index].id.toString()
+                              }
+                          );
                         },
                         child: Card(
                           elevation: 5,

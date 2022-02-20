@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:intl/intl.dart';
 import 'package:pickandgo/models/delivery.dart';
 import 'package:pickandgo/models/delivery_summary.dart';
 import 'package:pickandgo/screens/employee/screens/wizard/employee_add_photo_screen.dart';
@@ -267,7 +268,7 @@ class _EmployeeDeliveryDetailsScreenState
                                     borderRadius: BorderRadius.circular(7.0),
                                   ),
                                   child: Text(
-                                    delivery.data!.pickDateTime,
+                                    DateFormat("yyyy-MM-dd").format(DateTime.parse(delivery.data!.pickDateTime)),
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
@@ -283,7 +284,7 @@ class _EmployeeDeliveryDetailsScreenState
                                     borderRadius: BorderRadius.circular(7.0),
                                   ),
                                   child: Text(
-                                    delivery.data!.pickDateTime,
+                                    DateFormat("HH:mm").format(DateTime.parse(delivery.data!.pickDateTime)),
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
