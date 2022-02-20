@@ -4,6 +4,7 @@ import 'package:pickandgo/models/delivery.dart';
 import 'package:pickandgo/models/delivery_summary.dart';
 import 'package:pickandgo/screens/employee/screens/wizard/employee_add_photo_screen.dart';
 import 'package:pickandgo/services/delivery_service.dart';
+import 'package:pickandgo/state/current_delivery.dart';
 import 'package:provider/provider.dart';
 import '/screens/employee/widgets/employee_sidebar.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +39,7 @@ class _EmployeeDeliveryDetailsScreenState
 
   @override
   Widget build(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    /// final arguments = ModalRoute.of(context)!.settings.arguments as Map;
 
     return Scaffold(
       drawer: EmployeeSideBar(),
@@ -56,22 +57,30 @@ class _EmployeeDeliveryDetailsScreenState
         child: Consumer<DeliveryService>(
           builder: (_, deliveryService ,__) {
             return FutureBuilder<Delivery>(
-                future: deliveryService.getDelivery(arguments['id']),
-                builder: (_, AsyncSnapshot<Delivery> deliveries) {
+                future: deliveryService.getDelivery(Provider.of<CurrentDelivery>(context).id),
+                builder: (_, AsyncSnapshot<Delivery> delivery) {
+                  if (delivery.connectionState == ConnectionState.waiting) {
+                    EasyLoading.show(status: "Loading ...");
+                  }
+                  if(!delivery.hasData) {
+                    return Container();
+                  }
+                  EasyLoading.dismiss();
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
-                          onTap: () => copyToClipBoard('PKG234234234'),
+                          onTap: () => copyToClipBoard(delivery.data!.no),
                           child: Card(
                             child: Padding(
                               padding: const EdgeInsets.all(18),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Your Tracking Number '),
+                                  Text('Your Request Number '),
                                   const SizedBox(height: 10),
                                   Container(
                                     padding: const EdgeInsets.all(5.0),
@@ -82,7 +91,7 @@ class _EmployeeDeliveryDetailsScreenState
                                       borderRadius: BorderRadius.circular(7.0),
                                     ),
                                     child: Text(
-                                      'PKG234234234',
+                                      delivery.data!.no,
                                       style: TextStyle(fontSize: 20),
                                     ),
                                   ),
@@ -119,12 +128,12 @@ class _EmployeeDeliveryDetailsScreenState
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Pickup Dispatched!',
-                                        style: TextStyle(fontSize: 20),
+                                        delivery.data!.status,
+                                        style: TextStyle(fontSize: 20, color: Colors.lightGreen),
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
-                                        'Status Updated on 16:35 on 28th of 2022',
+                                        delivery.data!.statusLog,
                                         style: TextStyle(fontSize: 12),
                                       ),
                                     ],
@@ -157,7 +166,7 @@ class _EmployeeDeliveryDetailsScreenState
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Nimal Fernando',
+                                        delivery.data!.driver,
                                         style: TextStyle(fontSize: 20),
                                       ),
                                       const SizedBox(height: 8),
@@ -203,7 +212,7 @@ class _EmployeeDeliveryDetailsScreenState
                                             borderRadius: BorderRadius.circular(7.0),
                                           ),
                                           child: Text(
-                                            'No.51/2, Level, 2 Lotus Rd, Colombo 1',
+                                            delivery.data!.senderAddress,
                                             style: TextStyle(fontSize: 16),
                                           ),
                                         ),
@@ -226,7 +235,7 @@ class _EmployeeDeliveryDetailsScreenState
                                             borderRadius: BorderRadius.circular(7.0),
                                           ),
                                           child: Text(
-                                            'No.51/2, Level, 2 Lotus Rd, Colombo 1',
+                                            delivery.data!.receiverAddress,
                                             style: TextStyle(fontSize: 16),
                                           ),
                                         ),
@@ -258,7 +267,7 @@ class _EmployeeDeliveryDetailsScreenState
                                     borderRadius: BorderRadius.circular(7.0),
                                   ),
                                   child: Text(
-                                    '03/02/2022',
+                                    delivery.data!.pickDateTime,
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
@@ -274,7 +283,7 @@ class _EmployeeDeliveryDetailsScreenState
                                     borderRadius: BorderRadius.circular(7.0),
                                   ),
                                   child: Text(
-                                    '16:30',
+                                    delivery.data!.pickDateTime,
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
@@ -303,7 +312,7 @@ class _EmployeeDeliveryDetailsScreenState
                                     borderRadius: BorderRadius.circular(7.0),
                                   ),
                                   child: Text(
-                                    'LKR 8000/=',
+                                    'LKR ${delivery.data!.cost}/=',
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
@@ -334,32 +343,32 @@ class _EmployeeDeliveryDetailsScreenState
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Sender’s First Name : Elliot',
+                                        'Sender’s First Name : ${delivery.data!.senderFirstname}',
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        'Sender’s Last Name : Smith',
+                                        'Sender’s Last Name : ${delivery.data!.senderLastname}',
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        'Contact : 071 675 5355',
+                                        'Contact : ${delivery.data!.senderContactNumber}',
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        'Alt Contact : 072 854 5376',
+                                        'Alt Contact :-',
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        'Email : elliesf@gmail.com',
+                                        'Email : ${delivery.data!.senderEmail}',
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        'Address : 340 1/A, Elsy Road, Nalluruwa, Panadura',
+                                        'Address : ${delivery.data!.senderAddress}',
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
@@ -393,32 +402,32 @@ class _EmployeeDeliveryDetailsScreenState
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Receiver's First Name : Randeep",
+                                        "Receiver's First Name : ${delivery.data!.receiverFirstname}",
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        "Receiver's Last Name : Fernando",
+                                        "Receiver's Last Name : ${delivery.data!.receiverLastname}",
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        "Contact : 076 834 5311",
+                                        "Contact : ${delivery.data!.receiverContactNumber}",
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        "Alt Contact : 072 834 5311",
+                                        "Alt Contact : -",
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        "Email : randeepf7@gmail.com",
+                                        "Email : ${delivery.data!.receiverEmail}",
                                         style: TextStyle(fontSize: 15),
                                       ),
                                       const SizedBox(height: 10),
                                       Text(
-                                        'Address : No.51/2, Level, 2 Lotus Rd, Colombo 00100',
+                                        'Address : ${delivery.data!.receiverAddress}',
                                         style: TextStyle(fontSize: 15),
                                       ),
                                     ],
@@ -451,22 +460,22 @@ class _EmployeeDeliveryDetailsScreenState
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Width: 45 m",
+                                        "Width: ${delivery.data!.width} m",
                                         style: TextStyle(fontSize: 13),
                                       ),
                                       const SizedBox(width: 5),
                                       Text(
-                                        "Height: 45 m",
+                                        "Height: ${delivery.data!.height} m",
                                         style: TextStyle(fontSize: 13),
                                       ),
                                       const SizedBox(width: 5),
                                       Text(
-                                        "Length: 45 m",
+                                        "Length: ${delivery.data!.length} m",
                                         style: TextStyle(fontSize: 13),
                                       ),
                                       const SizedBox(width: 5),
                                       Text(
-                                        "Weight: 45 kg",
+                                        "Weight: ${delivery.data!.weight} kg",
                                         style: TextStyle(fontSize: 13),
                                       ),
                                       const SizedBox(width: 5),
@@ -497,7 +506,7 @@ class _EmployeeDeliveryDetailsScreenState
                                     borderRadius: BorderRadius.circular(7.0),
                                   ),
                                   child: Text(
-                                    'Extremely Fragile and requires extreme care.',
+                                    delivery.data!.packageDescription,
                                     style: TextStyle(fontSize: 15),
                                   ),
                                 ),
@@ -527,10 +536,10 @@ class _EmployeeDeliveryDetailsScreenState
   confirm(context) async {
     EasyLoading.show(status: 'Confirming...');
     try {
-      await Provider
+      var id = Provider.of<CurrentDelivery>(context).id;
+       await Provider
           .of<DeliveryService>(context, listen: false)
-      //TODO get package id
-          .confirm("23");
+          .confirm(id);
       EasyLoading.dismiss();
     } catch(e) {
       ScaffoldMessenger.of(context).showSnackBar(

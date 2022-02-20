@@ -11,7 +11,7 @@ class DeliverySummary with _$DeliverySummary {
   @JsonSerializable(explicitToJson: true)
   factory DeliverySummary(
       {
-         String? track_no,
+        required String no,
         required int id,
         required String from,
         required String to,

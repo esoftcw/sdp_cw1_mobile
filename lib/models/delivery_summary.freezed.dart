@@ -23,14 +23,14 @@ class _$DeliverySummaryTearOff {
   const _$DeliverySummaryTearOff();
 
   _DeliverySummary call(
-      {String? track_no,
+      {required String no,
       required int id,
       required String from,
       required String to,
       required String eta,
       required String type}) {
     return _DeliverySummary(
-      track_no: track_no,
+      no: no,
       id: id,
       from: from,
       to: to,
@@ -49,7 +49,7 @@ const $DeliverySummary = _$DeliverySummaryTearOff();
 
 /// @nodoc
 mixin _$DeliverySummary {
-  String? get track_no => throw _privateConstructorUsedError;
+  String get no => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   String get from => throw _privateConstructorUsedError;
   String get to => throw _privateConstructorUsedError;
@@ -68,12 +68,7 @@ abstract class $DeliverySummaryCopyWith<$Res> {
           DeliverySummary value, $Res Function(DeliverySummary) then) =
       _$DeliverySummaryCopyWithImpl<$Res>;
   $Res call(
-      {String? track_no,
-      int id,
-      String from,
-      String to,
-      String eta,
-      String type});
+      {String no, int id, String from, String to, String eta, String type});
 }
 
 /// @nodoc
@@ -87,7 +82,7 @@ class _$DeliverySummaryCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? track_no = freezed,
+    Object? no = freezed,
     Object? id = freezed,
     Object? from = freezed,
     Object? to = freezed,
@@ -95,10 +90,10 @@ class _$DeliverySummaryCopyWithImpl<$Res>
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      track_no: track_no == freezed
-          ? _value.track_no
-          : track_no // ignore: cast_nullable_to_non_nullable
-              as String?,
+      no: no == freezed
+          ? _value.no
+          : no // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -131,12 +126,7 @@ abstract class _$DeliverySummaryCopyWith<$Res>
       __$DeliverySummaryCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? track_no,
-      int id,
-      String from,
-      String to,
-      String eta,
-      String type});
+      {String no, int id, String from, String to, String eta, String type});
 }
 
 /// @nodoc
@@ -152,7 +142,7 @@ class __$DeliverySummaryCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? track_no = freezed,
+    Object? no = freezed,
     Object? id = freezed,
     Object? from = freezed,
     Object? to = freezed,
@@ -160,10 +150,10 @@ class __$DeliverySummaryCopyWithImpl<$Res>
     Object? type = freezed,
   }) {
     return _then(_DeliverySummary(
-      track_no: track_no == freezed
-          ? _value.track_no
-          : track_no // ignore: cast_nullable_to_non_nullable
-              as String?,
+      no: no == freezed
+          ? _value.no
+          : no // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -193,7 +183,7 @@ class __$DeliverySummaryCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_DeliverySummary extends _DeliverySummary {
   _$_DeliverySummary(
-      {this.track_no,
+      {required this.no,
       required this.id,
       required this.from,
       required this.to,
@@ -205,7 +195,7 @@ class _$_DeliverySummary extends _DeliverySummary {
       _$$_DeliverySummaryFromJson(json);
 
   @override
-  final String? track_no;
+  final String no;
   @override
   final int id;
   @override
@@ -219,7 +209,7 @@ class _$_DeliverySummary extends _DeliverySummary {
 
   @override
   String toString() {
-    return 'DeliverySummary(track_no: $track_no, id: $id, from: $from, to: $to, eta: $eta, type: $type)';
+    return 'DeliverySummary(no: $no, id: $id, from: $from, to: $to, eta: $eta, type: $type)';
   }
 
   @override
@@ -227,7 +217,7 @@ class _$_DeliverySummary extends _DeliverySummary {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DeliverySummary &&
-            const DeepCollectionEquality().equals(other.track_no, track_no) &&
+            const DeepCollectionEquality().equals(other.no, no) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.from, from) &&
             const DeepCollectionEquality().equals(other.to, to) &&
@@ -238,7 +228,7 @@ class _$_DeliverySummary extends _DeliverySummary {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(track_no),
+      const DeepCollectionEquality().hash(no),
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(from),
       const DeepCollectionEquality().hash(to),
@@ -258,7 +248,7 @@ class _$_DeliverySummary extends _DeliverySummary {
 
 abstract class _DeliverySummary extends DeliverySummary {
   factory _DeliverySummary(
-      {String? track_no,
+      {required String no,
       required int id,
       required String from,
       required String to,
@@ -270,7 +260,7 @@ abstract class _DeliverySummary extends DeliverySummary {
       _$_DeliverySummary.fromJson;
 
   @override
-  String? get track_no;
+  String get no;
   @override
   int get id;
   @override

@@ -8,7 +8,7 @@ part of 'delivery_summary.dart';
 
 _$_DeliverySummary _$$_DeliverySummaryFromJson(Map<String, dynamic> json) =>
     _$_DeliverySummary(
-      track_no: json['track_no'] as String?,
+      no: json['no'] as String,
       id: json['id'] as int,
       from: json['from'] as String,
       to: json['to'] as String,
@@ -18,7 +18,7 @@ _$_DeliverySummary _$$_DeliverySummaryFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_DeliverySummaryToJson(_$_DeliverySummary instance) =>
     <String, dynamic>{
-      'track_no': instance.track_no,
+      'no': instance.no,
       'id': instance.id,
       'from': instance.from,
       'to': instance.to,

@@ -185,9 +185,10 @@ class CustomerNewDeliverScreen3 extends StatelessWidget {
   createPickUp(context, pickup) async {
     EasyLoading.show(status: 'Saving...');
     try {
-      await Provider
+      var response = await Provider
           .of<DeliveryService>(context, listen: false)
           .makePickUp(pickup!);
+      print(response);
       EasyLoading.dismiss();
     } catch(e) {
       ScaffoldMessenger.of(context).showSnackBar(

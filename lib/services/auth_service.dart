@@ -46,6 +46,14 @@ class AuthService extends ChangeNotifier{
     }
   }
 
+  Future<void> register(String name, String email, String password) async {
+     await ApiClient().post('customer/register', {
+      'name': name,
+      'email': email,
+      'password': password
+    });
+  }
+
   Future<void> logout() async {
     _isLoggedIn = false;
     await StorageService().delete('token');

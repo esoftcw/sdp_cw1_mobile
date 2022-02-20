@@ -36,13 +36,16 @@ class ApiClient {
   }
 
   _transformer(Response response) {
-    print(response.body);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
     }
 
     if (response.statusCode == 401) {
       throw Exception('Invalid username or password');
+    }
+
+    if (response.statusCode == 400) {
+      throw Exception(jsonDecode(response.body)['message']);
     }
 
     if (response.statusCode == 422) {

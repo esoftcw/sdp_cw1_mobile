@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pickandgo/models/delivery_summary.dart';
 import 'package:pickandgo/services/delivery_service.dart';
+import 'package:pickandgo/state/current_delivery.dart';
 import 'package:provider/provider.dart';
 import '/screens/employee/widgets/employee_sidebar.dart';
 import 'employee_delivery_details.dart';
@@ -34,6 +35,9 @@ class _EmployeeMainScreenState extends State<EmployeeMainScreen> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
+                      Provider.of<CurrentDelivery>(context, listen: false)
+                          .setSelectedId(deliveries.data![index].id);
+
                       Navigator.of(context)
                           .pushNamed(
                           EmployeeDeliveryDetailsScreen.routeName,
@@ -47,9 +51,12 @@ class _EmployeeMainScreenState extends State<EmployeeMainScreen> {
                       margin: EdgeInsets.all(5),
                       child: ListTile(
                         contentPadding: EdgeInsets.all(5),
-                        title: Text(deliveries.data![index].from),
-                        subtitle: Text(deliveries.data![index].from),
-                        trailing: Text(deliveries.data![index].type),
+                        title: Text(deliveries.data![index].no),
+                        subtitle: Text("From: ${deliveries.data![index].from}, To: ${deliveries.data![index].to}"),
+                        trailing: Chip(
+                          label: Text(deliveries.data![index].type.toUpperCase()),
+                          backgroundColor: deliveries.data![index].type == "delivery" ? Colors.blue : Colors.green ,
+                        ),
                       ),
                     ),
                   );

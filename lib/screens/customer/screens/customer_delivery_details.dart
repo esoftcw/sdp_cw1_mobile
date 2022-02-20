@@ -41,7 +41,7 @@ class _CustomerDeliveryDetailsScreenState
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: () => copyToClipBoard('PKG234234234'),
+                onTap: () => copyToClipBoard('PKG148666'),
                 child: Card(
                   child: Padding(
                     padding: const EdgeInsets.all(18),
@@ -59,7 +59,7 @@ class _CustomerDeliveryDetailsScreenState
                             borderRadius: BorderRadius.circular(7.0),
                           ),
                           child: Text(
-                            'PKG234234234',
+                            'PKG148666',
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
@@ -87,7 +87,7 @@ class _CustomerDeliveryDetailsScreenState
                       Container(
                         padding: const EdgeInsets.all(5.0),
                         width: MediaQuery.of(context).size.width,
-                        height: 60,
+                        height: 90,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(7.0),
@@ -96,12 +96,20 @@ class _CustomerDeliveryDetailsScreenState
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              'Pickup Dispatched!',
-                              style: TextStyle(fontSize: 20),
+                              'In transit',
+                              style: TextStyle(fontSize: 20, color: Colors.lightGreen),
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Status Updated on 16:35 on 28th of 2022',
+                              'Pick Dispatched on 09:29 on 19th of Feb 2022',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                            Text(
+                              'Arrived at Dambulla on 04:43 on 19th of Feb 2022',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                            Text(
+                              'Arrived at Kurunagala on 06:53 on 19th of Feb 2022',
                               style: TextStyle(fontSize: 12),
                             ),
                           ],
@@ -131,7 +139,7 @@ class _CustomerDeliveryDetailsScreenState
                           borderRadius: BorderRadius.circular(7.0),
                         ),
                         child: Text(
-                          '03/02/2022',
+                          '19/02/2022',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -147,7 +155,7 @@ class _CustomerDeliveryDetailsScreenState
                           borderRadius: BorderRadius.circular(7.0),
                         ),
                         child: Text(
-                          '16:30',
+                          '09:29',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -176,7 +184,7 @@ class _CustomerDeliveryDetailsScreenState
                           borderRadius: BorderRadius.circular(7.0),
                         ),
                         child: Text(
-                          'LKR 8000/=',
+                          'LKR 1480/=',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -207,32 +215,32 @@ class _CustomerDeliveryDetailsScreenState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Sender’s First Name : Elliot',
+                              'Sender’s First Name : Sanath',
                               style: TextStyle(fontSize: 15),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Sender’s Last Name : Smith',
+                              'Sender’s Last Name : Samarasinghe',
                               style: TextStyle(fontSize: 15),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Contact : 071 675 5355',
+                              'Contact : 071 675 323423',
                               style: TextStyle(fontSize: 15),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Alt Contact : 072 854 5376',
+                              'Alt Contact : - ',
                               style: TextStyle(fontSize: 15),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Email : elliesf@gmail.com',
+                              'Email : sanath@test.com',
                               style: TextStyle(fontSize: 15),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Address : No.51/2, Level, 2 Lotus Rd, Colombo 00100',
+                              'Address : No.51/2, BOP 453, Pulasthigama, Polonnaruwa',
                               style: TextStyle(fontSize: 15),
                             ),
                           ],
