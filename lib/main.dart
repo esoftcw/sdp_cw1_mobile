@@ -10,6 +10,7 @@ import 'package:pickandgo/screens/employee/screens/main_screen.dart';
 import 'package:pickandgo/screens/employee/screens/wizard/employee_add_photo_screen.dart';
 import 'package:pickandgo/services/auth_service.dart';
 import 'package:pickandgo/services/delivery_service.dart';
+import 'package:pickandgo/state/current_delivery.dart';
 import 'package:pickandgo/state/pickup_builder.dart';
 import 'package:provider/provider.dart';
 import 'screens/login.dart';
@@ -25,7 +26,8 @@ void main() async {
       ChangeNotifierProvider<DeliveryService>(
         create: (context) => DeliveryService(),
       ),
-      Provider<PickupBuilder>(create: (context) => PickupBuilder())
+      Provider<PickupBuilder>(create: (context) => PickupBuilder()),
+      Provider<CurrentDelivery>(create: (context) => CurrentDelivery())
     ],
     child: TripAndGo(),
   ));

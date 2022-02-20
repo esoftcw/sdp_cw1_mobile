@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pickandgo/models/delivery_summary.dart';
+import 'package:pickandgo/screens/customer/screens/customer_delivery_details.dart';
 import 'package:pickandgo/services/delivery_service.dart';
 import 'package:provider/provider.dart';
 import '../widgets/customer_sidebar.dart';
@@ -31,6 +32,7 @@ class _CustomerMainScreenState extends State<CustomerMainScreen> {
                 if (!deliveries.hasData) {
                   return Container();
                 }
+                print(deliveries.data);
                 return ListView.builder(
                     itemCount: deliveries.data!.length,
                     itemBuilder: (context, index) {
@@ -43,12 +45,20 @@ class _CustomerMainScreenState extends State<CustomerMainScreen> {
                           margin: EdgeInsets.all(5),
                           child: ListTile(
                             contentPadding: EdgeInsets.all(5),
-                            title: Text(deliveries.data![index].from),
-                            subtitle: Text(deliveries.data![index].from),
-                            trailing: ElevatedButton(
-                              onPressed: () {},
+                            title: Text(deliveries.data![index].no),
+                            subtitle: Text("From: ${deliveries.data![index].from}, To: ${deliveries.data![index].to}"),
+                            trailing:  deliveries.data![index].type == "delivery" ? ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed(
+                                    CustomerDeliveryDetailsScreen.routeName,
+                                    arguments: {
+                                      "id": deliveries.data![index].id.toString()
+                                    }
+                                );
+                              },
                               child: const Text('Track'),
-                            ),
+                            ): null,
                           ),
                         ),
                       );

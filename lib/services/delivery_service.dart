@@ -28,27 +28,29 @@ class DeliveryService extends ChangeNotifier{
     }).toList();
   }
 
-  Future<Delivery> getDelivery(String id) async {
+  Future<Delivery> getDelivery(int id) async {
     var delivery = await ApiClient().get('deliveries/$id');
     return Delivery.fromJson(delivery);
   }
 
-  Future<void> makePickUp(Pickup pickup) async {
-     await ApiClient().post('pickup', {
+  makePickUp(Pickup pickup) async {
+     return ApiClient().post('pickup', {
         "pickup": jsonEncode(pickup.toJson())
       });
   }
 
   Future<void> addPackage(String pickupId, width, height, length, weight) async {
-     await ApiClient().post('deliveries/$pickupId/package', {
+    var response = await ApiClient().post('deliveries/$pickupId/package', {
         "width": width,
        "height": height,
        "length": length,
        "weight": weight
       });
+
+    print(response);
   }
 
-  Future<void> confirm(String pickupId) async {
+  Future<void> confirm(int pickupId) async {
      await ApiClient().post('deliveries/$pickupId/confirm', {});
   }
 
